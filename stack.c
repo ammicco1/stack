@@ -45,12 +45,13 @@ int push(stack *stack, element *element){
 
 element *pop(stack *stack){
     element *tmp = stack -> elem[stack -> top];
-    stack -> elem[stack -> top] = NULL;
 
     if(stack_empty(stack)){
         printf("THE STACK IS EMPTY");
         return NULL;
     }
+    
+    stack -> elem[stack -> top] = NULL;
 
     if(stack -> top + 1 <= __MAX_ELEM__ - 1){
         stack -> top = stack -> top + 1;
