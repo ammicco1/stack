@@ -57,7 +57,11 @@ int main(){
                         printf("INIZIALIZE THE STACK FIRST!");
                     } break;
             case 6: if(init){
-                        print_all_stack(stack);
+                        if(!stack_empty(stack)){
+                            print_all_stack(stack);
+                        }else{
+                            printf("THE STACK IS EMPTY");
+                        }
                     }else{
                         printf("INIZIALIZE THE STACK FIRST!");
                     } break;
