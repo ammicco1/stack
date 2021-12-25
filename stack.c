@@ -47,6 +47,11 @@ element *pop(stack *stack){
     element *tmp = stack -> elem[stack -> top];
     stack -> elem[stack -> top] = NULL;
 
+    if(stack_empty(stack)){
+        printf("THE STACK IS EMPTY");
+        return NULL;
+    }
+
     if(stack -> top + 1 <= __MAX_ELEM__ - 1){
         stack -> top = stack -> top + 1;
     }else{
@@ -57,6 +62,10 @@ element *pop(stack *stack){
 } 
 
 element *head(stack *stack){
+    if(stack_empty(stack)){
+        printf("THE STACK IS EMPTY");
+        return NULL;
+    }
     return stack -> elem[stack -> top];
 }
 
