@@ -1,6 +1,6 @@
 FLAGS = -Wall -ansi -pedantic
 OBJS = stack_main.o key.o element.o stack.o
-EXEC = stack
+EXEC = stack_main
 
 $(EXEC): $(OBJS)
 	gcc $(FLAGS) -o $(EXEC) $(OBJS)
