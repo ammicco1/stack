@@ -30,9 +30,10 @@ int main(){
                         printf("INIZIALIZE THE STACK FIRST!");
                     } break;
             case 3: if(init){
-                        key = get_element_key(pop(stack));
                         if(!stack_empty(stack)){
-                            printf("POP THE ELEMENT: %d", key);
+                            printf("POP THE ELEMENT: %d", get_element_key(pop(stack)));
+                        }else{
+                            printf("THE STACK IS EMPTY");
                         }
                     }else{
                         printf("INIZIALIZE THE STACK FIRST!");
