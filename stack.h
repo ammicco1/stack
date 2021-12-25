@@ -1,7 +1,7 @@
 #include "element.h"
 #include <stdbool.h>
 
-#define __MAX_ELEM__ 10
+#define __MAX_ELEM__ 50
 
 typedef struct stack{
     int top;
