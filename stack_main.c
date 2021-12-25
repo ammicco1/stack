@@ -31,7 +31,7 @@ int main(){
                     } break;
             case 3: if(init){
                         key = get_element_key(pop(stack));
-                        if(key != NULL){
+                        if(!stack_empty(stack)){
                             printf("POP THE ELEMENT: %d", key);
                         }
                     }else{
