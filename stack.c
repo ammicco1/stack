@@ -39,7 +39,7 @@ int push(stack *stack, element *element){
         }
     }
 
-    printf("STACK IS FULL");
+    printf("STACK IS FULL\n");
     return -1;
 }
 
@@ -47,7 +47,7 @@ element *pop(stack *stack){
     element *tmp = stack -> elem[stack -> top];
     stack -> elem[stack -> top] = NULL;
 
-    if(stack -> top + 1 <= __MAX_ELEM__){
+    if(stack -> top + 1 <= __MAX_ELEM__ - 1){
         stack -> top = stack -> top + 1;
     }else{
         stack -> top = 0;
@@ -55,3 +55,35 @@ element *pop(stack *stack){
 
     return tmp;
 } 
+
+element *head(stack *stack){
+    return stack -> elem[stack -> top];
+}
+
+void print_all_stack(stack *stack){
+    int i;
+
+    for(i = stack -> top; i < __MAX_ELEM__; i++){
+        if(stack -> elem[i] != NULL){
+            if(get_element_key(stack -> elem[i]) < 10){
+                printf("---------\n|   %d   |\n---------\n", get_element_key(stack -> elem[i]));
+            }else if(get_element_key(stack -> elem[i]) >= 100){
+                printf("---------\n|  %d  |\n---------\n", get_element_key(stack -> elem[i]));
+            }else{
+                printf("---------\n|   %d  |\n---------\n", get_element_key(stack -> elem[i]));
+            }
+        }
+    }
+
+    for(i = 0; i < stack -> top; i++){
+       if(stack -> elem[i] != NULL){
+            if(get_element_key(stack -> elem[i]) < 10){
+                printf("---------\n|   %d   |\n---------\n", get_element_key(stack -> elem[i]));
+            }else if(get_element_key(stack -> elem[i]) >= 100){
+                printf("---------\n|  %d  |\n---------\n", get_element_key(stack -> elem[i]));
+            }else{
+                printf("---------\n|   %d  |\n---------\n", get_element_key(stack -> elem[i]));
+            }
+        } 
+    }
+}

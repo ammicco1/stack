@@ -1,7 +1,7 @@
 #include "element.h"
 #include <stdbool.h>
 
-#define __MAX_ELEM__ 1000
+#define __MAX_ELEM__ 10
 
 typedef struct stack{
     int top;
@@ -15,3 +15,7 @@ bool stack_empty(stack *stack);
 int push(stack *stack, element *element);
 
 element *pop(stack *stack);
+
+element *head(stack *stack);
+
+void print_all_stack(stack *stack);
