@@ -39,7 +39,11 @@ int main(){
                         printf("INIZIALIZE THE STACK FIRST!");
                     } break;
             case 4: if(init){
-                        printf("HEAD THE ELEMENT: %d", get_element_key(head(stack)));
+                        if(!stack_empty(stack)){
+                            printf("HEAD THE ELEMENT: %d", get_element_key(head(stack)));
+                        }else{
+                            printf("THE STACK IS EMPTY");
+                        }
                     }else{
                         printf("INIZIALIZE THE STACK FIRST!");
                     } break;

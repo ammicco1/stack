@@ -68,6 +68,7 @@ element *head(stack *stack){
         printf("THE STACK IS EMPTY");
         return NULL;
     }
+    
     return stack -> elem[stack -> top];
 }
 
