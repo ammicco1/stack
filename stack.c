@@ -8,8 +8,9 @@ stack *inizialize_stack(element *element){
     for(i = 0; i < __MAX_ELEM__; i++){
         tmp -> elem[i] = NULL;
     }
-    tmp -> elem[0] = element;
-    tmp -> top = 0;
+
+    tmp -> top = 1;
+    tmp -> elem[tmp -> top] = element;
 
     return tmp;
 }
@@ -23,49 +24,38 @@ bool stack_empty(stack *stack){
 }
 
 int push(stack *stack, element *element){
-    int i;
-
-    for(i = stack -> top; i < __MAX_ELEM__; i++){
-        if(stack -> elem[i] == NULL){
-            stack -> elem[i] = element;
-            return 0;
-        }
+    if(stack -> top + 1 > __MAX_ELEM__){
+        printf("STACK IS FULL!");
+        return -1;
     }
 
-    for(i = 0; i < stack -> top; i++){
-        if(stack -> elem[i] == NULL){
-            stack -> elem[i] = element;
-            return 0;
-        }
-    }
+    stack -> top = stack -> top + 1;
+    stack -> elem[stack -> top] = element;
 
-    printf("STACK IS FULL\n");
-    return -1;
+    return 0;
 }
 
 element *pop(stack *stack){
     element *tmp;
 
     if(stack_empty(stack)){
-        printf("THE STACK IS EMPTY");
+        printf("STACK IS EMPTY");
         return NULL;
     }
 
     tmp = stack -> elem[stack -> top];
     stack -> elem[stack -> top] = NULL;
 
-    if(stack -> top + 1 <= __MAX_ELEM__ - 1){
-        stack -> top = stack -> top + 1;
-    }else{
-        stack -> top = 0;
-    }
+    if(stack -> top - 1 >=  0){
+        stack -> top = stack -> top - 1;  
+    }    
 
     return tmp;
 } 
 
 element *head(stack *stack){
     if(stack_empty(stack)){
-        printf("THE STACK IS EMPTY");
+        printf("STACK IS EMPTY");
         return NULL;
     }
     
@@ -75,7 +65,7 @@ element *head(stack *stack){
 void print_all_stack(stack *stack){
     int i;
 
-    for(i = stack -> top; i < __MAX_ELEM__; i++){
+    for(i = stack -> top; i >= 0; i--){
         if(stack -> elem[i] != NULL){
             if(get_element_key(stack -> elem[i]) < 10){
                 printf("---------\n|   %d   |\n---------\n", get_element_key(stack -> elem[i]));
@@ -85,17 +75,5 @@ void print_all_stack(stack *stack){
                 printf("---------\n|   %d  |\n---------\n", get_element_key(stack -> elem[i]));
             }
         }
-    }
-
-    for(i = 0; i < stack -> top; i++){
-       if(stack -> elem[i] != NULL){
-            if(get_element_key(stack -> elem[i]) < 10){
-                printf("---------\n|   %d   |\n---------\n", get_element_key(stack -> elem[i]));
-            }else if(get_element_key(stack -> elem[i]) >= 100){
-                printf("---------\n|  %d  |\n---------\n", get_element_key(stack -> elem[i]));
-            }else{
-                printf("---------\n|   %d  |\n---------\n", get_element_key(stack -> elem[i]));
-            }
-        } 
     }
 }
