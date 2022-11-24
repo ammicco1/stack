@@ -1,16 +1,16 @@
 #include "key.h"
-#include <stdlib.h>
+#include "stdlib.h"
 
 typedef struct element{
-    key *chiave;
+    key *key;
 } element;
 
-element *inizialize_element(key *chiave);
+element *inizialize_element(key *);
 
-void set_element_key(element *element, key *new_key);
+void set_element_key(element *, key *);
 
-int get_element_key(element *element);
+int get_element_key(element *);
 
-int compare_element(element *element_1, element *elemnent_2);
+int compare_element(element *, element *);
 
-void delete_element(element *element);
+void delete_element(element *);

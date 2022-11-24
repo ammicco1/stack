@@ -8,14 +8,14 @@ typedef struct stack{
     element *elem[__MAX_ELEM__]; 
 } stack;
 
-stack *inizialize_stack(element *element);
+stack *inizialize_stack(element *);
 
-bool stack_empty(stack *stack);
+bool stack_empty(stack *);
 
-int push(stack *stack, element *element);
+int push(stack *, element *);
 
-element *pop(stack *stack);
+element *pop(stack *);
 
-element *head(stack *stack);
+element *head(stack *);
 
-void print_all_stack(stack *stack);
+void print_all_stack(stack *);

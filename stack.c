@@ -1,7 +1,7 @@
 #include "stack.h"
 #include <stdio.h>
 
-stack *inizialize_stack(element *element){
+stack *inizialize_stack(element *e){
     int i;
     stack *tmp = (stack*) malloc(sizeof(stack));
 
@@ -10,69 +10,69 @@ stack *inizialize_stack(element *element){
     }
 
     tmp -> top = 1;
-    tmp -> elem[tmp -> top] = element;
+    tmp -> elem[tmp -> top] = e;
 
     return tmp;
 }
 
-bool stack_empty(stack *stack){
-    if(stack -> elem[stack -> top] == NULL){
+bool stack_empty(stack *s){
+    if(s -> elem[s -> top] == NULL){
         return true;
     }else{
         return false;
     }
 }
 
-int push(stack *stack, element *element){
-    if(stack -> top + 1 > __MAX_ELEM__){
+int push(stack *s, element *e){
+    if(s -> top + 1 > __MAX_ELEM__){
         printf("STACK IS FULL!");
         return -1;
     }
 
-    stack -> top = stack -> top + 1;
-    stack -> elem[stack -> top] = element;
+    s -> top = s -> top + 1;
+    s -> elem[s -> top] = e;
 
     return 0;
 }
 
-element *pop(stack *stack){
+element *pop(stack *s){
     element *tmp;
 
-    if(stack_empty(stack)){
+    if(stack_empty(s)){
         printf("STACK IS EMPTY");
         return NULL;
     }
 
-    tmp = stack -> elem[stack -> top];
-    stack -> elem[stack -> top] = NULL;
+    tmp = s -> elem[s -> top];
+    s -> elem[s -> top] = NULL;
 
-    if(stack -> top - 1 >=  0){
-        stack -> top = stack -> top - 1;  
+    if(s -> top - 1 >=  0){
+        s -> top = s -> top - 1;  
     }    
 
     return tmp;
 } 
 
-element *head(stack *stack){
-    if(stack_empty(stack)){
+element *head(stack *s){
+    if(stack_empty(s)){
         printf("STACK IS EMPTY");
         return NULL;
     }
     
-    return stack -> elem[stack -> top];
+    return s -> elem[s -> top];
 }
 
-void print_all_stack(stack *stack){
+void print_all_stack(stack *s){
     int i;
 
-    for(i = stack -> top; i >= 0; i--){
-        if(stack -> elem[i] != NULL){
-            if(get_element_key(stack -> elem[i]) < 10){
-                printf("---------\n|   %d   |\n---------\n", get_element_key(stack -> elem[i]));
-            }else if(get_element_key(stack -> elem[i]) >= 100){
-                printf("---------\n|  %d  |\n---------\n", get_element_key(stack -> elem[i]));
+    for(i = s -> top; i >= 0; i--){
+        if(s -> elem[i] != NULL){
+            if(get_element_key(s -> elem[i]) < 10){
+                printf("---------\n|   %d   |\n---------\n", get_element_key(s -> elem[i]));
+            }else if(get_element_key(s -> elem[i]) >= 100){
+                printf("---------\n|  %d  |\n---------\n", get_element_key(s -> elem[i]));
             }else{
-                printf("---------\n|   %d  |\n---------\n", get_element_key(stack -> elem[i]));
+                printf("---------\n|   %d  |\n---------\n", get_element_key(s -> elem[i]));
             }
         }
     }
